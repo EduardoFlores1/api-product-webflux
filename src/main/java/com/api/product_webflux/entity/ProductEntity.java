@@ -11,7 +11,24 @@ public class ProductEntity {
     private String Name;
     private double Price;
 
-    public ProductEntity() {}
+    private ProductEntity(String name, double price) {
+        Name = name;
+        Price = price;
+    }
+    private ProductEntity(int productId, String name, double price) {
+        ProductId = productId;
+        Name = name;
+        Price = price;
+    }
+
+
+    // exponemos un metodo mas declarativo para el constructor
+    public static ProductEntity createCTR(String name, double price) {
+        return new ProductEntity(name, price);
+    }
+    public static ProductEntity updateCTR(int productId, String name, double price) {
+        return new ProductEntity(productId, name, price);
+    }
 
     public int getProductId() {
         return ProductId;
