@@ -1,6 +1,6 @@
 package com.api.product_webflux.dto;
 
-public record ProductRequestDTO(
+public record CreateProductDTO(
         String Name,
         double Price
 ) {};
