@@ -1,15 +1,21 @@
 package com.api.product_webflux.entity;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
 @Table(name = "Products")
 public class ProductEntity {
 
     @Id
+    @Column(value = "ProductId")
     private int ProductId;
+
     private String Name;
+
     private double Price;
+
+    public ProductEntity() {}
 
     private ProductEntity(String name, double price) {
         Name = name;

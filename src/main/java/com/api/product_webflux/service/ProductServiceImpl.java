@@ -26,6 +26,7 @@ public class ProductServiceImpl implements IProductService {
     @Override
     public Flux<ProductResponseDTO> getAll() {
         return productRepository.findAll()
+                .doOnNext(entity -> System.out.println(entity))
                 .map(ProductMapper::fromEntityToResponse);
     }
 
