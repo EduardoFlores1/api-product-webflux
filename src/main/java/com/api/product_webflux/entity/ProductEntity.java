@@ -1,17 +1,40 @@
 package com.api.product_webflux.entity;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
 @Table(name = "Products")
 public class ProductEntity {
 
     @Id
+    @Column(value = "ProductId")
     private int ProductId;
+
     private String Name;
+
     private double Price;
 
     public ProductEntity() {}
+
+    private ProductEntity(String name, double price) {
+        Name = name;
+        Price = price;
+    }
+    private ProductEntity(int productId, String name, double price) {
+        ProductId = productId;
+        Name = name;
+        Price = price;
+    }
+
+
+    // exponemos un metodo mas declarativo para el constructor
+    public static ProductEntity createCTR(String name, double price) {
+        return new ProductEntity(name, price);
+    }
+    public static ProductEntity updateCTR(int productId, String name, double price) {
+        return new ProductEntity(productId, name, price);
+    }
 
     public int getProductId() {
         return ProductId;
